@@ -12,8 +12,9 @@ package hotelbookinggui;
 public class TestingClass {
     public static void main(String[] args) {
             DatabaseScripts db = new DatabaseScripts();
-           // db.connectDB();
-            db.createTable();
+            PrecheckSQL precheck = new PrecheckSQL();
+     
+                    
          //   db.insertTable(sql);
          //   db.insertTable();
     }

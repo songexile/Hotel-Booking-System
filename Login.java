@@ -129,10 +129,13 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_userNameFieldActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        // TODO add your handling code here:
+
         username = userNameField.getText();
         password = passwordField.getText();
-        JOptionPane.showMessageDialog(null, "Login");
+        JOptionPane.showMessageDialog(null, "Login successful");
+        new Menu().setVisible(true);
+        this.dispose(); //removes current window
+        
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**

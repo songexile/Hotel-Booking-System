@@ -6,7 +6,9 @@
 package hotelbookinggui;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -44,6 +46,44 @@ public class DatabaseScripts {
         }
     }
     
+    public int checkTableExist(String name) //Check if table exist, if exist delete.
+    {
+              int exist = 0; //flag for if table exists
+          try {
+              
+            DatabaseMetaData dbmd = this.conn.getMetaData();
+            String[] types = {"TABLE"};
+            st = this.conn.createStatement();
+            ResultSet rs = dbmd.getTables(null, null, null, types);
+
+            while (rs.next()) {
+                String table_name = rs.getString("TABLE_NAME");
+                System.out.println(table_name);
+                if (table_name.equalsIgnoreCase(name)) {
+                    exist = 1;
+//                    st.executeUpdate("Drop table " + name);
+//                    System.out.println("Table " + name + " has been deleted.");
+                    break;
+                }
+            }
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+          return exist;
+    }
+    
+    public void dropTable(String table)
+    {
+        try {
+            st.executeUpdate(table);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseScripts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+
+    
     public void closeConnection(){
         if(conn != null)
         {
@@ -56,39 +96,20 @@ public class DatabaseScripts {
         }
     }
     
-    public void createTable()
+    public void executeSQL(String sql) //Blanket SQL function to execute whatever is wanted.
     {
         try{
          st=this.conn.createStatement();
         
-        String newTable="cartable";
-        
-       // st.executeUpdate("drop table if exists "+newTable);
-        
-        String sqlCreateTable="CREATE TABLE "+newTable+" (ID INT, "
-        + "MAKE VARCHAR(50), MODEL VARCHAR(50), PRICE INT )";
-       
-        st.executeUpdate(sqlCreateTable);
+        st.executeUpdate(sql);
         }
         catch (SQLException ex) {
         System.err.println("SQLException: " + ex.getMessage());
 }
     }
     
-    public void insertTable(String sql)
-    {
-        //String sql = "Insert into cartable (id, make) values (135,'honda')";
-        try {
-            
-            st=conn.createStatement();
-            st.executeUpdate(sql);
-           
-        } catch (SQLException ex) {
-            Logger.getLogger(DatabaseScripts.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-    
 
     
+
+  
 }

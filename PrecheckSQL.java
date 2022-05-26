@@ -19,7 +19,7 @@ public class PrecheckSQL { //Class to help init SQL for new user
     
     PrecheckSQL()
     {
-         conn = scripts.conn;
+         conn = scripts.getConnection();
          sqlScripts = new StoreSQL(); //This class just stores string text of SQL commands
          initBoot();
     }
@@ -27,13 +27,15 @@ public class PrecheckSQL { //Class to help init SQL for new user
     
     public boolean checkNewUser() //Checks if database tables already exisit, if number not = 4 then the user is new
     {
+        boolean forceNewUser = false;
         int newUser = 0;
         
-        newUser += scripts.checkTableExist("guestTable");
-       newUser += scripts.checkTableExist("roomTable");
-        newUser += scripts.checkTableExist("discountTable");
-       newUser += scripts.checkTableExist("loginTable");
-        return newUser != 4; 
+        newUser += scripts.checkTableExist("GUESTS");
+       newUser += scripts.checkTableExist("ROOMS");
+        newUser += scripts.checkTableExist("USERLOGIN");
+       newUser += scripts.checkTableExist("DISCOUNT");
+        System.out.println("Num of tables that exist :"+newUser);
+        return newUser != 4 || forceNewUser == true; //Currently forcing newUser for testing. 
     }
     
     public void generateTables()
@@ -48,6 +50,7 @@ public class PrecheckSQL { //Class to help init SQL for new user
     public void generateLogin() //This inserts SQL scripts INSERT creating login for user (this is done only on first boot of database)
     {
         scripts.executeSQL(sqlScripts.insertLogin);
+        System.out.println("Login created");
     }
     
     public void initBoot() //Init boot checks if database already exist, if doesnt creates it
@@ -55,11 +58,11 @@ public class PrecheckSQL { //Class to help init SQL for new user
         boolean newUser = checkNewUser();
         if(newUser == true) 
             {
-                 scripts.dropTable("guestTable");
-                 scripts.dropTable("roomTable");
-                 scripts.dropTable("discountTable");
-                 scripts.dropTable("loginTable");
-                 System.out.println("PRECHECK SQL: TABLES DROPPED");
+                // scripts.dropTable("guestTable");
+                // scripts.dropTable("roomTable");
+                // scripts.dropTable("discountTable");
+                // scripts.dropTable("loginTable");
+                // System.out.println("PRECHECK SQL: TABLES DROPPED");
                  //Drop table just incase bugs, allows user to start fresh
                  generateTables(); //Generates tables for user
                  generateLogin(); //Populates login with 1 default login
@@ -67,6 +70,10 @@ public class PrecheckSQL { //Class to help init SQL for new user
                  
                  //TODO: Will need to populate Room database
             }
+           
+        
+            //    Controller c = new Controller();
+              //  c.checkLoginCorrect("pdc", "pdc");
            
         
         

@@ -18,12 +18,12 @@ import java.util.logging.Logger;
  *
  * @author PC
  */
-public class DatabaseScripts {
+public  class DatabaseScripts {
     private static final String jdbcURL = "jdbc:derby:HotelDB;create=true";
     private static final String username = "pdc";
     private static final String password = "pdc";
-    Connection conn;
-    Statement st;
+    public static Connection conn;
+    public static Statement st;
     
     public DatabaseScripts(){
         connectDB();
@@ -48,6 +48,7 @@ public class DatabaseScripts {
     
     public int checkTableExist(String name) //Check if table exist, if exist delete.
     {
+        System.out.println("Starting DATABASESCRIPTS: CHECKTABLETXIST");
               int exist = 0; //flag for if table exists
           try {
               
@@ -58,7 +59,7 @@ public class DatabaseScripts {
 
             while (rs.next()) {
                 String table_name = rs.getString("TABLE_NAME");
-                System.out.println(table_name);
+               System.out.println(table_name);
                 if (table_name.equalsIgnoreCase(name)) {
                     exist = 1;
 //                    st.executeUpdate("Drop table " + name);
@@ -73,10 +74,47 @@ public class DatabaseScripts {
           return exist;
     }
     
+    public ResultSet getResultSet(String query) { 
+        {
+        ResultSet rs = null;
+        try {
+            rs = this.st.executeQuery(query);
+
+           // rs.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return rs;
+        }
+
+    }
+    
+    
+   /* public ResultSet getResultSet(String query) { Old return set for testing
+
+        String user = "";
+        String pass = "";
+        ResultSet rs = null;
+        try {
+            String queryString = "SELECT * FROM USERLOGIN";
+            rs = this.st.executeQuery(queryString);
+            rs.next();
+            user = rs.getString("username");
+            pass = rs.getString("password");
+            rs.close();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("resultset test: " + user + pass);
+        return rs;
+
+    }
+*/
+
     public void dropTable(String table)
     {
         try {
-            st.executeUpdate(table);
+            st.executeUpdate("Drop table "+table);
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseScripts.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -102,8 +140,10 @@ public class DatabaseScripts {
          st=this.conn.createStatement();
         
         st.executeUpdate(sql);
+        
         }
         catch (SQLException ex) {
+            ex.printStackTrace();
         System.err.println("SQLException: " + ex.getMessage());
 }
     }

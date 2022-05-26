@@ -130,12 +130,21 @@ public class Login extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
 
-        username = userNameField.getText();
-        password = passwordField.getText();
-        JOptionPane.showMessageDialog(null, "Login successful");
-        new Menu().setVisible(true);
-        this.dispose(); //removes current window
-        
+        boolean loginSuccessful = false;
+        Controller controller = new Controller();
+
+            username = userNameField.getText();
+            password = passwordField.getText();
+            controller.checkLoginCorrect(username, password); //checks with DB if username and password correct
+            if (controller.checkLoginCorrect(username, password)) {
+                JOptionPane.showMessageDialog(null, "Login successful");
+                new Menu().setVisible(true);
+                this.dispose(); //removes current window
+            }
+            else
+            {
+            JOptionPane.showMessageDialog(null, "Login failed");         
+            }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**

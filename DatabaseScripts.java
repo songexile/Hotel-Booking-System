@@ -22,11 +22,14 @@ public  class DatabaseScripts {
     private static final String jdbcURL = "jdbc:derby:HotelDB;create=true";
     private static final String username = "pdc";
     private static final String password = "pdc";
-    public static Connection conn;
-    public static Statement st;
+    private static PrecheckSQL precheckSQL;
+    private   Connection conn;
+    private  Statement st;
+    
     
     public DatabaseScripts(){
         connectDB();
+       // precheckSQL = new PrecheckSQL(); //this does precheck of project, if db set up.
     }
     
        public Connection getConnection() {
@@ -38,6 +41,7 @@ public  class DatabaseScripts {
         if(this.conn == null){
             try{
                 conn = DriverManager.getConnection(jdbcURL, username, password);
+                 st = this.conn.createStatement();
                 System.out.println("Connection to DB");
             }
                 catch(SQLException e){
@@ -90,27 +94,6 @@ public  class DatabaseScripts {
     }
     
     
-   /* public ResultSet getResultSet(String query) { Old return set for testing
-
-        String user = "";
-        String pass = "";
-        ResultSet rs = null;
-        try {
-            String queryString = "SELECT * FROM USERLOGIN";
-            rs = this.st.executeQuery(queryString);
-            rs.next();
-            user = rs.getString("username");
-            pass = rs.getString("password");
-            rs.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        System.out.println("resultset test: " + user + pass);
-        return rs;
-
-    }
-*/
-
     public void dropTable(String table)
     {
         try {

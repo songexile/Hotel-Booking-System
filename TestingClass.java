@@ -11,10 +11,10 @@ package hotelbookinggui;
  */
 public class TestingClass {
     public static void main(String[] args) {
-            DatabaseScripts db = new DatabaseScripts();
-            PrecheckSQL precheck = new PrecheckSQL();
-         Login login = new Login();
-          login.setVisible(true);
+        //    DatabaseScripts db = new DatabaseScripts();
+         //   PrecheckSQL precheck = new PrecheckSQL();
+        // Login login = new Login();
+        //  login.setVisible(true);
             
             
      

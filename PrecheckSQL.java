@@ -12,14 +12,18 @@ import java.sql.Connection;
  * @author PC
  */
 public class PrecheckSQL { //Class to help init SQL for new user
-    DatabaseScripts scripts = new DatabaseScripts();
-    Connection conn;
+   private  DatabaseScripts scripts;
+    private Connection conn;
     StoreSQL sqlScripts;
     
     
     PrecheckSQL()
     {
-         conn = scripts.getConnection();
+        scripts = new DatabaseScripts();
+        conn = scripts.getConnection();
+     //   scripts = new DatabaseScripts();
+        // scripts = new DatabaseScripts();
+      //   conn = scripts.getConnection();
          sqlScripts = new StoreSQL(); //This class just stores string text of SQL commands
          initBoot();
     }
@@ -66,6 +70,7 @@ public class PrecheckSQL { //Class to help init SQL for new user
                  //Drop table just incase bugs, allows user to start fresh
                  generateTables(); //Generates tables for user
                  generateLogin(); //Populates login with 1 default login
+                 //generateRooms
                  System.out.println("PRECHECK SQL: TABLES GENERATED, POPULATED LOGIN");
                  
                  //TODO: Will need to populate Room database

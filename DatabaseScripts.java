@@ -22,7 +22,7 @@ public  class DatabaseScripts {
     private static final String jdbcURL = "jdbc:derby:HotelDB;create=true";
     private static final String username = "pdc";
     private static final String password = "pdc";
-    private static PrecheckSQL precheckSQL;
+    private static initSQL precheckSQL;
     private   Connection conn;
     private  Statement st;
     

@@ -11,13 +11,13 @@ import java.sql.Connection;
  *
  * @author PC
  */
-public class PrecheckSQL { //Class to help init SQL for new user
+public class initSQL { //Class to help init SQL for new user
    private  DatabaseScripts scripts;
     private Connection conn;
     StoreSQL sqlScripts;
     
     
-    PrecheckSQL()
+    initSQL()
     {
         scripts = new DatabaseScripts();
         conn = scripts.getConnection();

@@ -12,7 +12,7 @@ package hotelbookinggui;
 public  class MenusController { //Class to control the menus
     
     private static DatabaseScripts db;
-    private static PrecheckSQL precheckDb;
+    private static initSQL precheckDb;
     
     private static MenusHelper helper;
 
@@ -27,7 +27,7 @@ public  class MenusController { //Class to control the menus
     MenusController()
     {
         db = new DatabaseScripts();
-        precheckDb = new PrecheckSQL(); //Does precheck to see if database exisit
+        precheckDb = new initSQL(); //Does precheck to see if database exisit
         helper = new MenusHelper();
         initLoginWindow();
         

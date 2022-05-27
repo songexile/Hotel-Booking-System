@@ -30,12 +30,12 @@ public class Menu extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        bookGuestRoom = new javax.swing.JButton();
+        searchGuestButton = new javax.swing.JButton();
+        viewRoomsButton = new javax.swing.JButton();
+        checkOutGuestButton = new javax.swing.JButton();
+        addDiscountButton = new javax.swing.JButton();
+        exitProgramButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -61,22 +61,24 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Book Guest into Room");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bookGuestRoom.setText("Book Guest into Room");
+        bookGuestRoom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bookGuestRoomActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Search Guest");
+        searchGuestButton.setText("Search Guest");
+        this.show(false);
+        new SearchGuestForm().setVisible(true);
 
-        jButton3.setText("View Rooms");
+        viewRoomsButton.setText("View Rooms");
 
-        jButton4.setText("Checkout Guest");
+        checkOutGuestButton.setText("Checkout Guest");
 
-        jButton5.setText("Add Discount Codes to System");
+        addDiscountButton.setText("Add Discount Codes to System");
 
-        jButton6.setText("Exit Program ");
+        exitProgramButton.setText("Exit Program ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,36 +88,38 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(searchGuestButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewRoomsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkOutGuestButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addDiscountButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(exitProgramButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookGuestRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
+                .addComponent(bookGuestRoom)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(searchGuestButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(viewRoomsButton)
                 .addGap(25, 25, 25)
-                .addComponent(jButton4)
+                .addComponent(checkOutGuestButton)
                 .addGap(33, 33, 33)
-                .addComponent(jButton5)
+                .addComponent(addDiscountButton)
                 .addGap(38, 38, 38)
-                .addComponent(jButton6))
+                .addComponent(exitProgramButton))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bookGuestRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookGuestRoomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.show(false);
+        new BookGuestRoomForm().setVisible(true);
+    }//GEN-LAST:event_bookGuestRoomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -154,13 +158,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton addDiscountButton;
+    private javax.swing.JButton bookGuestRoom;
+    private javax.swing.JButton checkOutGuestButton;
+    private javax.swing.JButton exitProgramButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton searchGuestButton;
+    private javax.swing.JButton viewRoomsButton;
     // End of variables declaration//GEN-END:variables
 }

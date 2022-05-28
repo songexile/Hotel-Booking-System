@@ -46,8 +46,16 @@ public class Login { //Class to seperate Database (model) with the View
         return false;
         //Check if userName exist, if no user, no user exist
         //If user exist check password
-        
-        
+  
     }
+    
+    public void generateLogin() //class to generate login if new table
+    {
+        DatabaseScripts scripts = new DatabaseScripts();
+        scripts.executeSQL(StoreSQL.insertLogin);
+        scripts.closeConnection();
+       
+    }
+    
     
 }

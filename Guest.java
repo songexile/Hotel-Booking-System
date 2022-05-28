@@ -5,6 +5,8 @@
  */
 package hotelbookinggui;
 
+import java.util.Random;
+
 
 
 /**
@@ -12,46 +14,45 @@ package hotelbookinggui;
  * @author PC
  */
 public class Guest {
+
+    /**
+     * @return the firstName
+     */
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public int getGuestID() {
+        return guestID;
+    }
     
     private String firstName;
     private String lastName;
     private String phoneNumber;
+    private int roomNumber;
+    private int guestID; //randomly generated guestID, used for SQL
+    private Random rand;
     
-    Guest(String firstName, String lastName, String phoneNumber)
+    
+    Guest(String firstName, String lastName, String phoneNumber, int roomNumber)
     {
+        rand = new Random();
+        
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-  
+        this.guestID = rand.nextInt(10000);
     }
     
-    public boolean isAlphabetical(String s) {
-        return s.matches("^[a-zA-Z]*$");
-    }
-    
-     public boolean isNumerical(String s) {
-        return s.matches("^[0-9]*$");
-    }
-    
-    public boolean checkName(String name)
+    public void insertGuest() //Used to insert guest into SQL
     {
+      //"INSERT INTO GUESTS VALUES ("+firstName+"","+lastName+","+phoneNumber+","+roomNumber+","+guestID+")";
+      Rooms room = new Rooms();
+      room.storeGuestRoom(this);
         
-        final int MIN_NAME = 2;
-        final int MAX_NAME = 30;
-        
-        if(name.length() > MAX_NAME || name.length()  < MIN_NAME)
-        {
-            System.out.println("The length of your name is either too short or too long");
-            return false;
-        }
-        
-        if(!isAlphabetical(name))
-        {
-            System.out.println("Only enter alphabetical characters");
-            return false;
-        }
-        return true;
-    
     }
     
+    
+
 }

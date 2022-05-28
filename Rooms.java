@@ -66,16 +66,23 @@ public class Rooms {
         return availableRooms;
     }
     
-    public void storeGuestRoom() //This is used to store a guest into a room using SQL
+    public void storeGuestRoom(Guest g) //This is used to store a guest into a room using SQL
     {
+        scripts = new DatabaseScripts();
+        scripts.executeSQL("UPDATE ROOMS\nSET ISRESERVED = 1, GUESTID ="+g.getGuestID()+", CHECKIN = NULL, CHECKOUT = NULL\n WHERE ROOMNUM ="+g.getRoomNumber());
+        System.out.println("Added Gues to room");
+        
+        //Get guestObject
+        //Store in room
         
     }
     
     public void checkoutGuest(int roomNumber) //This is used to checkout a guest from a room using SQL
     {
         scripts = new DatabaseScripts();
-        scripts.executeSQL("UPDATE ROOMS\nSET ISRESERVED = 1, GUESTID = 0, CHECKIN = NULL, CHECKOUT = NULL\n WHERE ROOMNUM = "+roomNumber);
+        scripts.executeSQL("UPDATE ROOMS\nSET ISRESERVED = 0, GUESTID = 0, CHECKIN = NULL, CHECKOUT = NULL\n WHERE ROOMNUM = "+roomNumber);
         System.out.println("Checkout guest test");
+        scripts.closeConnection();
         
     }
     

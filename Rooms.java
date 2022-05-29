@@ -70,7 +70,11 @@ public class Rooms {
     {
         scripts = new DatabaseScripts();
         scripts.executeSQL("UPDATE ROOMS\nSET ISRESERVED = 1, GUESTID ="+g.getGuestID()+", CHECKIN = NULL, CHECKOUT = NULL\n WHERE ROOMNUM ="+g.getRoomNumber());
-        System.out.println("Added Gues to room");
+        System.out.println(g.getGuestID());
+        System.out.println("room"+g.getRoomNumber());
+        System.out.println("Added Guest to room");
+        availableRooms();
+        scripts.closeConnection();
         
         //Get guestObject
         //Store in room

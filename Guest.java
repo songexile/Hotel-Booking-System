@@ -42,12 +42,14 @@ public class Guest {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
+        this.roomNumber = roomNumber;
         this.guestID = rand.nextInt(10000);
     }
     
     public void insertGuest() //Used to insert guest into SQL
     {
       //"INSERT INTO GUESTS VALUES ("+firstName+"","+lastName+","+phoneNumber+","+roomNumber+","+guestID+")";
+    
       Rooms room = new Rooms();
       room.storeGuestRoom(this);
         

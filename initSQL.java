@@ -69,7 +69,7 @@ public class initSQL { //Class to help init SQL for new user
     
     public void initBoot() //Init boot checks if database already exist, if doesnt creates it
     {
-       deleteTables(); //temp
+       //deleteTables(); //temp
         boolean newUser = checkNewUser();
         if(newUser == true) 
             {

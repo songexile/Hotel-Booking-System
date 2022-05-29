@@ -16,6 +16,7 @@ import java.util.logging.Logger;
  */
 public class Login { //Class to seperate Database (model) with the View
     private DatabaseScripts scripts;
+    private String test = "s";
 
     public boolean checkLoginCorrect(String username, String password)
     {

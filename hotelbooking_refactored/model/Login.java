@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hotelbookinggui;
+package hotelbooking_refactored.model;
 
+import hotelbookinggui.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -16,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class Login { //Class to seperate Database (model) with the View
     private DatabaseScripts scripts;
-    private String test = "s";
+
 
     public boolean checkLoginCorrect(String username, String password)
     {

@@ -5,6 +5,7 @@
  */
 package hotelbooking_refactored.model;
 
+import hotelbooking_refactored.database.PreparedStatementsHelper;
 import hotelbookinggui.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,8 +54,11 @@ public class Login { //Class to seperate Database (model) with the View
     
     public void generateLogin() //class to generate login if new table
     {
+        System.out.println("generate Login");
         DatabaseScripts scripts = new DatabaseScripts();
         scripts.executeSQL(StoreSQL.insertLogin);
+        PreparedStatementsHelper helper = new PreparedStatementsHelper();
+        helper.userLoginStatement("o", "o");
         scripts.closeConnection();
        
     }

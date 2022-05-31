@@ -29,12 +29,14 @@ public class HotelController {
       //  changePanel(hotelFrame.menuPanel);
     }
     
-    public void changeState() //function to alert controller to close
+    public void openPanel(javax.swing.JPanel openPanel, javax.swing.JPanel panelToOpen ) //Open panel
     {
-        hotelFrame.setnew();
-        
+        openPanel.setVisible(false);
+        panelToOpen.setVisible(true);
+        changePanel(panelToOpen);
     }
     
+
     
 
     public HotelFrame getHotelFrame()

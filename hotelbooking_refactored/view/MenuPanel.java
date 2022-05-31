@@ -6,6 +6,7 @@
 package hotelbooking_refactored.view;
 
 import hotelbooking_refactored.controller.HotelController;
+import hotelbooking_refactored.database.initSQL;
 
 /**
  *
@@ -32,30 +33,128 @@ public class MenuPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
+        checkOutGuestButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        resetDB = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
+        bookGuestRoom = new javax.swing.JButton();
+        searchGuestButton = new javax.swing.JButton();
+        viewRoomsButton = new javax.swing.JButton();
+        checkOutGuestButton1 = new javax.swing.JButton();
+        addDiscountButton = new javax.swing.JButton();
 
+        jButton3.setText("Search Guest");
+
+        checkOutGuestButton.setText("Checkout Guest");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Menu");
+
+        resetDB.setText("Reset DB");
+        resetDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetDBActionPerformed(evt);
+            }
+        });
+
+        exitButton.setText("Exit");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+
+        bookGuestRoom.setText("Book Guest into Room");
+        bookGuestRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookGuestRoomActionPerformed(evt);
+            }
+        });
+
+        searchGuestButton.setText("Search Guest");
+        searchGuestButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchGuestButtonActionPerformed(evt);
+            }
+        });
+
+        viewRoomsButton.setText("View Rooms");
+
+        checkOutGuestButton1.setText("Checkout Guest");
+
+        addDiscountButton.setText("Add Discount Codes to System");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(158, 158, 158)
-                .addComponent(jLabel1)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(resetDB, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(106, 106, 106)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchGuestButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bookGuestRoom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewRoomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkOutGuestButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addDiscountButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(jLabel1)
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(bookGuestRoom))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(searchGuestButton)
+                .addGap(18, 18, 18)
+                .addComponent(viewRoomsButton)
+                .addGap(27, 27, 27)
+                .addComponent(checkOutGuestButton1)
+                .addGap(30, 30, 30)
+                .addComponent(addDiscountButton)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resetDB)
+                    .addComponent(exitButton)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bookGuestRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookGuestRoomActionPerformed
+        // TODO add your handling code here:
+        controller.openPanel(this, controller.getHotelFrame().bookGuestPanel);
+       
+        //new BookGuestRoomForm().setVisible(true);
+    }//GEN-LAST:event_bookGuestRoomActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void resetDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetDBActionPerformed
+      
+       
+    }//GEN-LAST:event_resetDBActionPerformed
+
+    private void searchGuestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGuestButtonActionPerformed
+        controller.openPanel(this, controller.getHotelFrame().searchGuestPanel);
+    }//GEN-LAST:event_searchGuestButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addDiscountButton;
+    private javax.swing.JButton bookGuestRoom;
+    private javax.swing.JButton checkOutGuestButton;
+    private javax.swing.JButton checkOutGuestButton1;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton resetDB;
+    private javax.swing.JButton searchGuestButton;
+    private javax.swing.JButton viewRoomsButton;
     // End of variables declaration//GEN-END:variables
 }

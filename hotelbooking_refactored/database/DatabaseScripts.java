@@ -5,10 +5,11 @@
  */
 package hotelbooking_refactored.database;
 
-import hotelbookinggui.*;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -94,7 +95,6 @@ public  class DatabaseScripts {
 
     }
     
-    
     public void dropTable(String table)
     {
         try {
@@ -104,8 +104,7 @@ public  class DatabaseScripts {
         }
     }
     
-
-    
+ 
     public void closeConnection(){
         if(conn != null)
         {
@@ -131,6 +130,42 @@ public  class DatabaseScripts {
         System.err.println("SQLException: " + ex.getMessage());
 }
     }
+    
+        public void userLoginStatement(String userName, String password)
+    {
+        System.out.println("USER LOGIN STATEMENT");
+        try {
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO USERLOGIN VALUES (?,?)");
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            int i=ps.executeUpdate();  
+            ps.close();
+            System.out.println(i+ "records");
+        } catch (SQLException ex) {
+            Logger.getLogger(PreparedStatementsHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+        public void guestStatement(String firstName, String lastName, String phoneNumber, int roomNumber, int guestID)
+    {
+        try {
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO GUESTS VALUES (?,?,?,?,?)");
+            ps.setString(1, firstName);
+            ps.setString(2, lastName);
+            ps.setString(3, phoneNumber);
+            ps.setInt(4, roomNumber);
+            ps.setInt(5, guestID);
+             int i=ps.executeUpdate();  
+            ps.close();
+            
+         
+        } catch (SQLException ex) {
+            Logger.getLogger(PreparedStatementsHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+ 
     
 
     

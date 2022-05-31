@@ -27,7 +27,7 @@ public class initSQL { //Class to help init SQL for new user
       //   conn = scripts.getConnection();
       
          //sqlScripts = new StoreSQL(); //This class just stores string text of SQL commands
-         initBoot();
+         initBoot(); 
     }
     
     public void deleteTables() //Table can be used to delete all tables
@@ -62,6 +62,20 @@ public class initSQL { //Class to help init SQL for new user
                 System.out.println("Table created");
             }
     
+    public void resetDB() //Resets Db to a near factory setting
+    {
+        System.out.println("run reset db");
+        deleteTables();
+        generateTables();
+        
+        Login login = new Login();
+        Rooms rooms = new Rooms();
+        
+        login.generateLogin();
+        rooms.generateRooms();
+        
+    }
+    
  /*   public void generateLogin() //This inserts SQL scripts INSERT creating login for user (this is done only on first boot of database)
     {
         scripts.executeSQL(sqlScripts.insertLogin);
@@ -70,17 +84,22 @@ public class initSQL { //Class to help init SQL for new user
     
     public void initBoot() //Init boot checks if database already exist, if doesnt creates it
     {
+        System.out.println("init boot");
+        deleteTables();
+      
+   
        //deleteTables(); //temp
         boolean newUser = checkNewUser();
         if(newUser == true) 
             {
+                System.out.println("NEW USER");
                 Login login = new Login();
                 Rooms rooms = new Rooms();
                  generateTables(); 
-                 login.generateLogin();
+                 scripts.userLoginStatement("a", "a");
                  rooms.generateRooms();
                  rooms.availableRooms();
-                 rooms.checkoutGuest(2);
+                
              
 
                  System.out.println("PRECHECK SQL: TABLES GENERATED, POPULATED LOGIN");

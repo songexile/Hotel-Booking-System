@@ -19,12 +19,16 @@ public class HotelFrame extends JFrame {
     
     public LoginPanel loginPanel;
     public MenuPanel menuPanel;
+    public BookGuestPanel bookGuestPanel;
+    public SearchGuestPanel searchGuestPanel;
     
     
     public HotelFrame(HotelController controller)
     {
         loginPanel = new LoginPanel(controller);
         menuPanel = new MenuPanel(controller);
+        bookGuestPanel = new BookGuestPanel(controller);
+        searchGuestPanel = new SearchGuestPanel(controller);
         setupFrame(this.loginPanel);  
         
     }
@@ -33,6 +37,11 @@ public class HotelFrame extends JFrame {
     {
         
         changePanel(menuPanel);
+    }
+    
+    public void exit()
+    {
+       
     }
     
     //Method which changes Panel, controlled through HotelController

@@ -22,7 +22,12 @@ public class HotelLoginController {
     public HotelLoginController(HotelController controller)
     {
         this.controller = controller;    
-
+    }
+    
+    public void openMenu()
+    {
+        controller.getHotelFrame().loginPanel.setVisible(false);
+        controller.changePanel(controller.getHotelFrame().menuPanel);
     }
     
 
@@ -34,15 +39,13 @@ public class HotelLoginController {
         
         if(correct)
         {
-            controller.getHotelFrame().loginPanel.setVisible(false);
-            controller.changePanel(controller.getHotelFrame().menuPanel);
+            openMenu();
             
            
-        
         }
         else
         {
-           
+            System.out.println("Incorrect login");
                     
         }
     }

@@ -5,6 +5,7 @@
  */
 package hotelbookinggui;
 
+import hotelbooking_refactored.helperclasses.InputHelper;
 import javax.swing.JOptionPane;
 
 /**

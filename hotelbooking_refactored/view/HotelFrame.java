@@ -21,6 +21,8 @@ public class HotelFrame extends JFrame {
     public MenuPanel menuPanel;
     public BookGuestPanel bookGuestPanel;
     public SearchGuestPanel searchGuestPanel;
+    public ViewRoomsPanel viewRoomsPanel;
+    public CheckoutGuestPanel checkoutGuestPanel;
     
     
     public HotelFrame(HotelController controller)
@@ -29,6 +31,8 @@ public class HotelFrame extends JFrame {
         menuPanel = new MenuPanel(controller);
         bookGuestPanel = new BookGuestPanel(controller);
         searchGuestPanel = new SearchGuestPanel(controller);
+        viewRoomsPanel = new ViewRoomsPanel(controller);
+        checkoutGuestPanel = new CheckoutGuestPanel(controller);
         setupFrame(this.loginPanel);  
         
     }

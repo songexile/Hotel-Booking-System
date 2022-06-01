@@ -7,6 +7,7 @@ package hotelbooking_refactored.view;
 
 import hotelbooking_refactored.controller.HotelBookGuestController;
 import hotelbooking_refactored.controller.HotelController;
+import hotelbooking_refactored.controller.HotelSearchGuestController;
 import hotelbooking_refactored.model.Guest;
 import hotelbooking_refactored.model.Rooms;
 
@@ -14,23 +15,20 @@ import hotelbooking_refactored.model.Rooms;
  *
  * @author PC
  */
-public class SearchGuestPanel extends javax.swing.JPanel {
+public class CheckoutGuestPanel extends javax.swing.JPanel {
     private HotelController controller;
     private int roomNum = 0;
     /**
      * Creates new form BookGuestPanel
      */
-    public SearchGuestPanel(HotelController controller) {
+    public CheckoutGuestPanel(HotelController controller) {
         this.controller = controller;
         initComponents();
-        Rooms rooms = new Rooms();
-        
-        for(int i = 0; i < rooms.availableRooms(1).size(); i++)
-        {
-            roomNumBox.addItem(rooms.availableRooms(1).get(i).toString()); //this will get all the rooms that are taken
-        }
-           
+               
     }
+    
+    
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,33 +40,15 @@ public class SearchGuestPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        firstNameField = new javax.swing.JTextField();
-        lastNameField = new javax.swing.JTextField();
-        phoneNumField = new javax.swing.JTextField();
         roomNumBox = new javax.swing.JComboBox<>();
         backButton = new javax.swing.JButton();
         searchGuest = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Search Guest");
-
-        jLabel2.setText("First Name");
-
-        jLabel3.setText("Last Name");
-
-        jLabel4.setText("Phone Number");
+        jLabel1.setText("Checkout Guest");
 
         jLabel5.setText("Room Number");
-
-        firstNameField.setText("John");
-
-        lastNameField.setText("Doe");
-
-        phoneNumField.setText("0800838383");
 
         roomNumBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +63,7 @@ public class SearchGuestPanel extends javax.swing.JPanel {
             }
         });
 
-        searchGuest.setText("Search Guest");
+        searchGuest.setText("Checkout Guest");
         searchGuest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchGuestActionPerformed(evt);
@@ -101,48 +81,25 @@ public class SearchGuestPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(searchGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGap(88, 88, 88)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(phoneNumField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(firstNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(roomNumBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 66, Short.MAX_VALUE)))
+                        .addComponent(jLabel1)
+                        .addGap(0, 224, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(roomNumBox, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phoneNumField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addGap(108, 108, 108)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(roomNumBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
                     .addComponent(searchGuest))
@@ -163,25 +120,18 @@ public class SearchGuestPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_roomNumBoxActionPerformed
 
     private void searchGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGuestActionPerformed
-    //Check if first name && last name != null
-   Guest.getConfirmationResultSet("a", "a");
-    
-   
-      
-
+        HotelSearchGuestController guestController = new HotelSearchGuestController(controller);
+        Rooms rooms = new Rooms();
+        rooms.checkoutGuest(roomNum);
+      //  guestController.populateRoomNumBox();
+        
     }//GEN-LAST:event_searchGuestActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField lastNameField;
-    private javax.swing.JTextField phoneNumField;
     private javax.swing.JComboBox<String> roomNumBox;
     private javax.swing.JButton searchGuest;
     // End of variables declaration//GEN-END:variables

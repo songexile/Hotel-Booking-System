@@ -7,6 +7,7 @@ package hotelbooking_refactored.view;
 
 import hotelbooking_refactored.controller.HotelBookGuestController;
 import hotelbooking_refactored.controller.HotelController;
+import hotelbooking_refactored.controller.HotelSearchGuestController;
 import hotelbooking_refactored.model.Guest;
 import hotelbooking_refactored.model.Rooms;
 
@@ -23,13 +24,31 @@ public class SearchGuestPanel extends javax.swing.JPanel {
     public SearchGuestPanel(HotelController controller) {
         this.controller = controller;
         initComponents();
+               
+    }
+    
+    public javax.swing.JComboBox getComboBox()
+    {
+        return roomNumBox;
+    }
+    
+    
+    
+    public void resetComboBox()
+    {
+        roomNumBox.removeAllItems();
+    }
+    
+    
+    
+    public void populateComboBox()
+    {
         Rooms rooms = new Rooms();
         
         for(int i = 0; i < rooms.availableRooms(1).size(); i++)
         {
             roomNumBox.addItem(rooms.availableRooms(1).get(i).toString()); //this will get all the rooms that are taken
         }
-           
     }
 
     /**
@@ -163,11 +182,8 @@ public class SearchGuestPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_roomNumBoxActionPerformed
 
     private void searchGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGuestActionPerformed
-    //Check if first name && last name != null
-   Guest.getConfirmationResultSet("a", "a");
-    
-   
-      
+        HotelSearchGuestController guestController = new HotelSearchGuestController(controller);
+        guestController.displayInformation(Guest.getGuestinRoom(this.roomNum));   
 
     }//GEN-LAST:event_searchGuestActionPerformed
 

@@ -11,10 +11,16 @@ import static javax.swing.JOptionPane.showMessageDialog;
  */
 public class AbstractController {
     
-        public void displayError()
+        public void displayError(String errorMessage)
     {
-        showMessageDialog(null, "This is a test msg");
+        showMessageDialog(null, errorMessage);
   
     }
+        
+        public void displayInformation(String information)
+        {
+            
+            showMessageDialog(null, information);
+        }
     
 }

@@ -30,8 +30,7 @@ public class HotelLoginController {
         controller.changePanel(controller.getHotelFrame().menuPanel);
     }
     
-
-    
+ 
     public void validateLogin(String name, String password)
     {
         Login login = new Login();

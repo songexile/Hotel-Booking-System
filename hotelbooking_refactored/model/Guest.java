@@ -57,7 +57,6 @@ public class Guest {
     {
       DatabaseScripts scripts = new DatabaseScripts();
       scripts.guestStatement(firstName, lastName, phoneNumber, roomNumber, guestID);
-
       Rooms room = new Rooms();
       room.storeGuestRoom(this);  
     }
@@ -67,7 +66,7 @@ public class Guest {
         String details = "";
         int guestID;
         
-         final String sql = "SELECT FIRSTNAME, LASTNAME, GUESTID FROM GUESTS WHERE FIRSTNAME = John and LASTNAME = Doe";
+         final String sql = "SELECT FIRSTNAME, LASTNAME, GUESTID FROM GUESTS WHERE FIRSTNAME = John";
         DatabaseScripts scripts = new DatabaseScripts();
         ResultSet rs = null;
         rs = scripts.getResultSet(sql);
@@ -85,6 +84,37 @@ public class Guest {
             }
          System.out.println(details);      
     }
+    
+    public static String getGuestinRoom(int roomNum)
+    {
+         final String sql = "SELECT FIRSTNAME, LASTNAME, GUESTID FROM GUESTS WHERE ROOMNUM ="+roomNum;
+        String s = "";
+        DatabaseScripts scripts = new DatabaseScripts();
+        ResultSet rs = null;
+        rs = scripts.getResultSet(sql);
+        
+         try {
+        while(rs.next())
+        {
+            
+            String fName = rs.getString("FIRSTNAME");
+            String lName = rs.getString("LASTNAME");
+            int guestID = rs.getInt("GUESTID");
+            
+          s += "Guest : "+fName +" "+lName+ " "+ guestID;
+                  
+        }
+        rs.close();
+        
+            } catch (SQLException ex) {
+                Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         return s;
+     
+    }
+    
+    
+    
     
     public String getReceipt() //Returns full name + roomNumber
     {

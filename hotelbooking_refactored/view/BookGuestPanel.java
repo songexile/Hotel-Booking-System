@@ -23,12 +23,13 @@ public class BookGuestPanel extends javax.swing.JPanel {
     public BookGuestPanel(HotelController controller) {
         this.controller = controller;
         initComponents();
-        Rooms rooms = new Rooms();
+     
         
-         for(int i = 0; i < rooms.availableRooms(0).size(); i++)
-        {
-            roomNumBox.addItem(rooms.availableRooms(0).get(i).toString());
-        }   
+    }
+    
+    public javax.swing.JComboBox getRoomNumBox()
+    {
+        return this.roomNumBox;
     }
 
     /**
@@ -186,6 +187,8 @@ public class BookGuestPanel extends javax.swing.JPanel {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         controller.openPanel(this, controller.getHotelFrame().menuPanel); //closes current panel and opens menu
+        bookGuest.setEnabled(true);
+        
      
     }//GEN-LAST:event_backButtonActionPerformed
 
@@ -197,17 +200,15 @@ public class BookGuestPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_roomNumBoxActionPerformed
 
     private void bookGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookGuestActionPerformed
-      //Validate user login
-      //Create Guest Object
-      //Stores it in GuestController
-      //Books guest  by adding guest to database
-      //Display confirmation on screen if succesed
-   
-       Guest g = new Guest(firstNameField.getText(), lastNameField.getText(), phoneNumField.getText(), roomNum);
-        HotelBookGuestController hotelBookGuestController = new HotelBookGuestController();
-        hotelBookGuestController.bookGuestButton(g);
-        hotelBookGuestController.displayConfirmation();
-
+     //When user presses book button
+     //  Guest g = new Guest(firstNameField.getText(), lastNameField.getText(), phoneNumField.getText(), roomNum);
+     
+        HotelBookGuestController hotelBookGuestController = new HotelBookGuestController(controller);
+        if(hotelBookGuestController.validateInformation(firstNameField.getText(), lastNameField.getText(), phoneNumField.getText(), roomNum) == 3)
+            bookGuest.setEnabled(false);
+        
+       
+        
     }//GEN-LAST:event_bookGuestActionPerformed
 
     private void numNightsBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numNightsBoxActionPerformed

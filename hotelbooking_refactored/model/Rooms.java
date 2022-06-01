@@ -84,14 +84,43 @@ public class Rooms {
         
     }
     
+    public String viewRooms() //This displays all rooms
+    {
+        String s = "";
+        
+         final String selectStatement = "SELECT ROOMNUM, ISRESERVED, PRICE FROM ROOMS"; //gets all rooms that are free
+        ResultSet rs = null;
+         scripts = new DatabaseScripts();
+         rs = scripts.getResultSet(selectStatement);
+         
+          try {
+            while(rs.next())
+            {
+                int rNum = rs.getInt("ROOMNUM");
+                int iReserved = rs.getInt("ISRESERVED");
+                int rPrice = rs.getInt("PRICE");
+                
+                s+= "Room : "+rNum + "| "+"("+iReserved+") | Price : $"+rPrice+"\n";
+            }
+            rs.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Rooms.class.getName()).log(Level.SEVERE, null, ex); 
+       }
+        return s;
+        
+    }
+    
     public void checkoutGuest(int roomNumber) //This is used to checkout a guest from a room using SQL
     {
         scripts = new DatabaseScripts();
         scripts.executeSQL("UPDATE ROOMS\nSET ISRESERVED = 0, GUESTID = 0, CHECKIN = NULL, CHECKOUT = NULL\n WHERE ROOMNUM = "+roomNumber);
         System.out.println("Checkout guest test");
         scripts.closeConnection();
-        
+       
     }
+    
+
     
     
 }

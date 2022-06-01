@@ -62,33 +62,30 @@ public class initSQL { //Class to help init SQL for new user
                 System.out.println("Table created");
             }
     
-    public void resetDB() //Resets Db to a near factory setting
+    public void quickReset()
     {
-        System.out.println("run reset db");
-        deleteTables();
-        generateTables();
+        scripts.executeSQL("Drop table " + "GUESTS");
+        scripts.executeSQL("Drop table " + "ROOMS");
+        scripts.executeSQL("Drop table " + "DISCOUNT");
         
-        Login login = new Login();
-        Rooms rooms = new Rooms();
-        
-        login.generateLogin();
-        rooms.generateRooms();
-        
+         scripts.executeSQL(sqlScripts.createGuest);
+         scripts.executeSQL(sqlScripts.discountTable);
+          scripts.executeSQL(sqlScripts.roomTable);
+          
+           Rooms rooms = new Rooms();
+           rooms.generateRooms();
     }
     
- /*   public void generateLogin() //This inserts SQL scripts INSERT creating login for user (this is done only on first boot of database)
-    {
-        scripts.executeSQL(sqlScripts.insertLogin);
-        System.out.println("Login created");
-    }*/
+
     
+
     public void initBoot() //Init boot checks if database already exist, if doesnt creates it
     {
         System.out.println("init boot");
-        deleteTables();
+    // deleteTables();
       
    
-       //deleteTables(); //temp
+    //   deleteTables(); //temp
         boolean newUser = checkNewUser();
         if(newUser == true) 
             {

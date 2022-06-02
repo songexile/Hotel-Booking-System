@@ -27,29 +27,23 @@ public class SearchGuestPanel extends javax.swing.JPanel {
                
     }
     
+    public void setRoomNum()
+    {
+        this.roomNum = 0;
+    }
+
+    public int getRoomNum() {
+        return roomNum;
+    }
+    
+    
+    
     public javax.swing.JComboBox getComboBox()
     {
         return roomNumBox;
     }
     
-    
-    
-    public void resetComboBox()
-    {
-        roomNumBox.removeAllItems();
-    }
-    
-    
-    
-    public void populateComboBox()
-    {
-        Rooms rooms = new Rooms();
-        
-        for(int i = 0; i < rooms.availableRooms(1).size(); i++)
-        {
-            roomNumBox.addItem(rooms.availableRooms(1).get(i).toString()); //this will get all the rooms that are taken
-        }
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,7 +136,8 @@ public class SearchGuestPanel extends javax.swing.JPanel {
 
     private void searchGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGuestActionPerformed
         HotelSearchGuestController guestController = new HotelSearchGuestController(controller);
-        guestController.displayInformation(Guest.getGuestinRoom(this.roomNum));   
+        guestController.pressButton();
+       // guestController.displayInformation(Guest.getGuestinRoom(this.roomNum));   
 
     }//GEN-LAST:event_searchGuestActionPerformed
 

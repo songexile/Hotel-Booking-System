@@ -25,6 +25,12 @@ public class Rooms {
     private final int notBooked = 0; //if room is not reserved
     private final int booked = 1; //if reserved
     private final int nullGuestID = 0; //
+
+    public int getRoomPrice() {
+        return roomPrice;
+    }
+    
+    
    
     
     

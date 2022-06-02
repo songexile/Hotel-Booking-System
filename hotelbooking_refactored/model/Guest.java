@@ -7,7 +7,7 @@ package hotelbooking_refactored.model;
 
 
 import hotelbooking_refactored.database.DatabaseScripts;
-import hotelbooking_refactored.database.PreparedStatementsHelper;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
@@ -61,30 +61,7 @@ public class Guest {
       room.storeGuestRoom(this);   //Store guest into room
     }
     
-    public static void getConfirmationResultSet(String firstName, String lastName)
-    {
-        String details = "";
-        int guestID;
-        
-         final String sql = "SELECT FIRSTNAME, LASTNAME, GUESTID FROM GUESTS WHERE FIRSTNAME = John";
-        DatabaseScripts scripts = new DatabaseScripts();
-        ResultSet rs = null;
-        rs = scripts.getResultSet(sql);
-         try {
-        while(rs.next())
-        {
-            guestID = rs.getInt("GUESTID");
-            System.out.println(guestID);
-                  
-        }
-        rs.close();
-        
-            } catch (SQLException ex) {
-                Logger.getLogger(Guest.class.getName()).log(Level.SEVERE, null, ex);
-            }
-         System.out.println(details);      
-    }
-    
+  
     public static String getGuestinRoom(int roomNum)
     {
          final String sql = "SELECT FIRSTNAME, LASTNAME, GUESTID FROM GUESTS WHERE ROOMNUM ="+roomNum;

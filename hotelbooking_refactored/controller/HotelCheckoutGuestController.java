@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
  *
  * @author PC
  */
-public class HotelCheckoutGuestController extends AbstractController {
+public class HotelCheckoutGuestController extends ControllerHelper implements ControllerInterface {
 private HotelController controller;
 
 public HotelCheckoutGuestController(HotelController controller)
@@ -29,6 +29,12 @@ public HotelCheckoutGuestController(HotelController controller)
     public void pressButton() //When button is pressed, guest is checked out of room and button state is unclickable
     {
        // controller.getHotelFrame().checkoutGuestPanel.getGuestButton();
+       if(controller.getHotelFrame().checkoutGuestPanel.getRoomNum() == 0)
+       {
+           this.displayError("Please select a room from the combo box");
+       }
+       
+       else{
         this.changeButtonState(controller.getHotelFrame().checkoutGuestPanel.getGuestButton(), false);
         Rooms rooms = new Rooms();
         
@@ -36,12 +42,14 @@ public HotelCheckoutGuestController(HotelController controller)
         guestController.displayInformation(Guest.getGuestinRoom(controller.getHotelFrame().checkoutGuestPanel.getRoomNum())); //This is done to get who is staying in the room
         
         rooms.checkoutGuest(controller.getHotelFrame().checkoutGuestPanel.getRoomNum());     
+       }
     }
     
     public void openPanel() //This will be used to init the panel, gets the rooms that are taken and makes the button clickable
     {
-        AbstractController abstractController = new AbstractController();
+        ControllerHelper abstractController = new ControllerHelper();
         abstractController.populateRoomNumBox(controller.getHotelFrame().checkoutGuestPanel.getRoomNumBox(), 1);
+        controller.getHotelFrame().checkoutGuestPanel.setRoomNum(); //this makes room number 0 so it cant be selected.
         
         controller.openPanel(controller.getHotelFrame().menuPanel, controller.getHotelFrame().checkoutGuestPanel);
         this.changeButtonState(controller.getHotelFrame().checkoutGuestPanel.getGuestButton(), true);

@@ -14,7 +14,7 @@ import hotelbooking_refactored.view.MenuPanel;
  *
  * @author PC
  */
-public class HotelLoginController extends AbstractController { //This Controller helps with loging in
+public class HotelLoginController extends ControllerHelper { //This Controller helps with loging in
     private HotelController controller;
     private boolean correct = false;
    

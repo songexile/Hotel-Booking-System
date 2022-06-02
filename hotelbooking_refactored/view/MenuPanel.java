@@ -5,10 +5,11 @@
  */
 package hotelbooking_refactored.view;
 
-import hotelbooking_refactored.controller.AbstractController;
+import hotelbooking_refactored.controller.ControllerHelper;
 import hotelbooking_refactored.controller.HotelBookGuestController;
 import hotelbooking_refactored.controller.HotelCheckoutGuestController;
 import hotelbooking_refactored.controller.HotelController;
+import hotelbooking_refactored.controller.HotelDiscountController;
 import hotelbooking_refactored.controller.HotelSearchGuestController;
 import hotelbooking_refactored.database.initSQL;
 
@@ -98,6 +99,11 @@ public class MenuPanel extends javax.swing.JPanel {
         });
 
         addDiscountButton.setText("Add Discount Codes to System");
+        addDiscountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addDiscountButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -140,7 +146,7 @@ public class MenuPanel extends javax.swing.JPanel {
     private void bookGuestRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookGuestRoomActionPerformed
 
         HotelBookGuestController guestController = new HotelBookGuestController(controller);
-        guestController.initGuestState();
+        guestController.openPanel();
     }//GEN-LAST:event_bookGuestRoomActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -158,8 +164,7 @@ public class MenuPanel extends javax.swing.JPanel {
     private void searchGuestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGuestButtonActionPerformed
 
      HotelSearchGuestController searchGuestController = new HotelSearchGuestController(controller);
-     searchGuestController.populateRoomNumBox(controller.getHotelFrame().searchGuestPanel.getComboBox(), 1);
-        controller.openPanel(this, controller.getHotelFrame().searchGuestPanel);
+     searchGuestController.openPanel();
 
     }//GEN-LAST:event_searchGuestButtonActionPerformed
 
@@ -175,6 +180,12 @@ public class MenuPanel extends javax.swing.JPanel {
       checkoutController.openPanel();
         
     }//GEN-LAST:event_checkOutGuestButton1ActionPerformed
+
+    private void addDiscountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDiscountButtonActionPerformed
+       HotelDiscountController discountController = new HotelDiscountController(controller);
+       discountController.openPanel();
+       
+    }//GEN-LAST:event_addDiscountButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

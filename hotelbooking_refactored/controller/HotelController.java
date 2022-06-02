@@ -15,7 +15,7 @@ import hotelbooking_refactored.model.Rooms;
  *
  * @author PC
  */
-public class HotelController implements ControllerInterface {
+public class HotelController implements MainControllerInterface {
     //Main controller class
     //This sets up Database, Frame and important things
     

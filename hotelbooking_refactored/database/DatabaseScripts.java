@@ -142,7 +142,7 @@ public  class DatabaseScripts {
             ps.close();
             System.out.println(i+ "records");
         } catch (SQLException ex) {
-            Logger.getLogger(PreparedStatementsHelper.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DatabaseScripts.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
         
@@ -160,10 +160,26 @@ public  class DatabaseScripts {
             
          
         } catch (SQLException ex) {
-            Logger.getLogger(PreparedStatementsHelper.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DatabaseScripts.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
+        
+        public void discountStatement(String discountCode, int discountAmount)
+        {
+             try {
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO DISCOUNT VALUES (?,?)");
+            ps.setString(1, discountCode);
+            ps.setInt(2, discountAmount);
+           
+             int i=ps.executeUpdate();  
+            ps.close();
+            
+         
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseScripts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
     
  
     

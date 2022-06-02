@@ -238,7 +238,7 @@ public class BookGuestPanel extends javax.swing.JPanel {
     private void bookGuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookGuestActionPerformed
 
         HotelBookGuestController hotelBookGuestController = new HotelBookGuestController(controller);
-        hotelBookGuestController.bookGuestButton(firstNameField.getText(), lastNameField.getText(), phoneNumField.getText(), roomNum);
+        hotelBookGuestController.pressButton(firstNameField.getText(), lastNameField.getText(), phoneNumField.getText(), roomNum);
  
      
     }//GEN-LAST:event_bookGuestActionPerformed

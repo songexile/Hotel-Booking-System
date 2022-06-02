@@ -43,6 +43,11 @@ public class CheckoutGuestPanel extends javax.swing.JPanel {
         return roomNum;
     }
     
+    public void setRoomNum() //resets room num to 0
+    {
+        this.roomNum = 0;
+    }
+    
 
     
     

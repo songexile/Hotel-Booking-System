@@ -9,12 +9,10 @@ package hotelbooking_refactored.controller;
  *
  * @author PC
  */
-public interface ControllerInterface {
-    //Simple inferface to help maintain core respoablities of the program.
+public interface ControllerInterface { //Simple interface for controllers to follow
     
-    public void openPanel(javax.swing.JPanel openPanel, javax.swing.JPanel panelToOpen );
-    public void start();
-    public void exit();
+    public void openPanel(); //Used to close exisiting panel and open new one
     
+    public void pressButton(); //Used for button of signifcantce
     
 }

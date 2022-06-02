@@ -82,7 +82,7 @@ public class initSQL { //Class to help init SQL for new user
     public void initBoot() //Init boot checks if database already exist, if doesnt creates it
     {
         System.out.println("init boot");
-   //deleteTables();
+   // deleteTables();
       
    
     //   deleteTables(); //temp
@@ -101,14 +101,8 @@ public class initSQL { //Class to help init SQL for new user
 
                  System.out.println("PRECHECK SQL: TABLES GENERATED, POPULATED LOGIN");
                  
-                 //TODO: Will need to populate Room database
+          
             }
-           
-        
-            //    Controller c = new Controller();
-              //  c.checkLoginCorrect("pdc", "pdc");
-           
-        
-        
+
     }
 }

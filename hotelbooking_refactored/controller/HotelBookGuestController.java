@@ -6,6 +6,7 @@
 package hotelbooking_refactored.controller;
 
 import hotelbooking_refactored.helperclasses.InputHelper;
+import hotelbooking_refactored.model.Discount;
 import hotelbooking_refactored.model.Guest;
 import hotelbooking_refactored.model.Rooms;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import static javax.swing.JOptionPane.showMessageDialog;
  * @author PC
  */
 //Controller to help with booking of guest
-public class HotelBookGuestController extends AbstractController {
+public class HotelBookGuestController extends ControllerHelper implements ControllerInterface {
     private Guest g;
     private HotelController controller;
     
@@ -27,24 +28,24 @@ public class HotelBookGuestController extends AbstractController {
         this.controller = controller;
     }
     
-    public void initGuestState() //Resets guest text, and retrieves comboBox, this is used when the panel is opened
+    public void openPanel() //Resets guest text, and retrieves comboBox, this is used when the panel is opened
     {
-        controller.getHotelFrame().bookGuestPanel.getDiscountField().setText("");
+        controller.getHotelFrame().bookGuestPanel.getDiscountField().setText(""); //Resets text field
         controller.getHotelFrame().bookGuestPanel.getFirstNameField().setText("");
         controller.getHotelFrame().bookGuestPanel.getLastNameField().setText("");
         controller.getHotelFrame().bookGuestPanel.getPhoneNumField().setText("");
         controller.getHotelFrame().bookGuestPanel.getBookGuest().setEnabled(true);
         controller.getHotelFrame().bookGuestPanel.resetRoomNum(); //this resets room num to 0
-        populateRoomNumBox(controller.getHotelFrame().bookGuestPanel.getRoomNumBox(), 0);
+        populateRoomNumBox(controller.getHotelFrame().bookGuestPanel.getRoomNumBox(), 0); //Populate roomnumbox
          controller.openPanel(controller.getHotelFrame().menuPanel, controller.getHotelFrame().bookGuestPanel);
     }
     
 
-    public void bookGuestButton(String firstName, String lastName, String phoneNum, int roomNum)
+    public void pressButton(String firstName, String lastName, String phoneNum, int roomNum)
     {
         if(roomNum < 1)
         {
-            displayError("Please select a room");
+            displayError("Please select a room"); //if user doesnt select room, default roomnum will be 0
         }
         else
         {
@@ -52,6 +53,9 @@ public class HotelBookGuestController extends AbstractController {
             if(correct == 3)
             {
                 controller.getHotelFrame().bookGuestPanel.getBookGuest().setEnabled(false);
+
+                Rooms room = new Rooms(); //call room to get price, not getting from db as the price from db comes from here
+                this.displayInformation("Price : $"+room.getRoomPrice());
             }
         }
         
@@ -97,11 +101,11 @@ public class HotelBookGuestController extends AbstractController {
         if(name)
         {
         flag = InputHelper.checkName(input);
-        flag = InputHelper.isAlphabetical(input);
+
         }
         else{
          flag =  InputHelper.checkNumber(input);
-         flag = InputHelper.isNumerical(input);
+ 
         }
      return flag;   
     }
@@ -116,7 +120,7 @@ public class HotelBookGuestController extends AbstractController {
     
     public void displayConfirmation()
     {
-        String displayMessage = "Congrats for booking a room we hope you will enjoy your stay "+g.getReceipt();
+        String displayMessage = "Congrats for booking your room we hope you will enjoy your stay "+g.getReceipt();
    
         showMessageDialog(null, displayMessage);
 
@@ -133,6 +137,11 @@ public class HotelBookGuestController extends AbstractController {
     @Override
     public void displayError(String s) {
         super.displayError(s); 
+    }
+
+    @Override
+    public void pressButton() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

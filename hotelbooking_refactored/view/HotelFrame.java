@@ -43,10 +43,7 @@ public class HotelFrame extends JFrame {
         changePanel(menuPanel);
     }
     
-    public void exit()
-    {
-       
-    }
+
     
     //Method which changes Panel, controlled through HotelController
     public void changePanel(javax.swing.JPanel panel)

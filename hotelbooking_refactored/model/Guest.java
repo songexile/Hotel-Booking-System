@@ -50,15 +50,15 @@ public class Guest {
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.roomNumber = roomNumber;
-        this.guestID = rand.nextInt(10000);
+        this.guestID = rand.nextInt(10000); 
     }
     
     public void insertGuest() //Used to insert guest into SQL
     {
       DatabaseScripts scripts = new DatabaseScripts();
-      scripts.guestStatement(firstName, lastName, phoneNumber, roomNumber, guestID);
+      scripts.guestStatement(firstName, lastName, phoneNumber, roomNumber, guestID); //Insert Guest into SQL
       Rooms room = new Rooms();
-      room.storeGuestRoom(this);  
+      room.storeGuestRoom(this);   //Store guest into room
     }
     
     public static void getConfirmationResultSet(String firstName, String lastName)

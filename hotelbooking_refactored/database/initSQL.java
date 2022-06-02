@@ -82,7 +82,7 @@ public class initSQL { //Class to help init SQL for new user
     public void initBoot() //Init boot checks if database already exist, if doesnt creates it
     {
         System.out.println("init boot");
-    // deleteTables();
+   //deleteTables();
       
    
     //   deleteTables(); //temp

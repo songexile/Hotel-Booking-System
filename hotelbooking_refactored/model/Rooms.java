@@ -115,6 +115,7 @@ public class Rooms {
     {
         scripts = new DatabaseScripts();
         scripts.executeSQL("UPDATE ROOMS\nSET ISRESERVED = 0, GUESTID = 0, CHECKIN = NULL, CHECKOUT = NULL\n WHERE ROOMNUM = "+roomNumber);
+        scripts.executeSQL("DELETE FROM GUESTS WHERE ROOMNUM ="+roomNumber);
         System.out.println("Checkout guest test");
         scripts.closeConnection();
        

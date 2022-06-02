@@ -15,13 +15,16 @@ import hotelbooking_refactored.model.Rooms;
  *
  * @author PC
  */
-public class HotelController {
+public class HotelController implements ControllerInterface {
+    //Main controller class
+    //This sets up Database, Frame and important things
     
     private HotelFrame hotelFrame;
     private DatabaseScripts db;
     private initSQL precheckDb;
     
-    public void start()
+    @Override
+    public void start() //This will be the entry point into the program
     {
         db = new DatabaseScripts();
         precheckDb = new initSQL(); //Does precheck to see if database exisit     
@@ -30,16 +33,24 @@ public class HotelController {
       //  changePanel(hotelFrame.menuPanel);
     }
     
-    public void openPanel(javax.swing.JPanel openPanel, javax.swing.JPanel panelToOpen ) //Open panel
+    @Override
+    public void exit() //Exit point from program
     {
-        openPanel.setVisible(false);
-        panelToOpen.setVisible(true);
-        changePanel(panelToOpen);
+        db.closeConnection();
+        System.exit(0);
+    }
+    
+    @Override
+    public void openPanel(javax.swing.JPanel openPanel, javax.swing.JPanel panelToOpen ) //This is used to change panels
+    {
+        openPanel.setVisible(false); //Set current panel to close
+        panelToOpen.setVisible(true); //Set panel that will be opened to true
+        changePanel(panelToOpen); //Change panel
     }
     
     public HotelFrame getHotelFrame()
     {
-        return this.hotelFrame;
+        return this.hotelFrame; //To get reference to hotel frame, this is used to access the Panels
     }
     
     public void changePanel(javax.swing.JPanel panel)
@@ -47,7 +58,7 @@ public class HotelController {
         hotelFrame.changePanel(panel);
     }
     
-    public void initViewRoomsPanel() //This will initlize the the text in viewrooms
+    public void initViewRoomsPanel() //This will initlize the the text in viewrooms, there isnt a controlling class for ViewRooms as it is small
     {
         hotelFrame.viewRoomsPanel.getTextArea().setText(""); //Resets text
         Rooms rooms = new Rooms(); //Call rooms so I can get avaible rooms to display
@@ -57,7 +68,7 @@ public class HotelController {
        // jTextArea1.append(rooms.viewRooms());
     }
     
-    public void resetDb()
+    public void resetDb() 
     {
         precheckDb.deleteTables();
         precheckDb.checkNewUser();

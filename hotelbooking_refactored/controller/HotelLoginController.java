@@ -14,7 +14,7 @@ import hotelbooking_refactored.view.MenuPanel;
  *
  * @author PC
  */
-public class HotelLoginController {
+public class HotelLoginController extends AbstractController { //This Controller helps with loging in
     private HotelController controller;
     private boolean correct = false;
    
@@ -31,21 +31,20 @@ public class HotelLoginController {
     }
     
  
-    public void validateLogin(String name, String password)
+    public void validateLogin(String name, String password) //Checks login from login class, if correct sign in.
     {
         Login login = new Login();
-        correct = login.checkLoginCorrect(name, password);
+        correct = login.checkLoginCorrect(name, password); 
         
         if(correct)
         {
             openMenu();
-            
-           
+     
         }
         else
         {
-            System.out.println("Incorrect login");
-                    
+            this.displayError("The username or password you have entered is not correct, please contact System Admin to reset.");
+                   
         }
     }
 

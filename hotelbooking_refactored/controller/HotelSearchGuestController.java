@@ -8,6 +8,7 @@ package hotelbooking_refactored.controller;
 import hotelbooking_refactored.model.Rooms;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -22,33 +23,19 @@ public class HotelSearchGuestController extends AbstractController {
     {
         this.controller = controller;
     }
+    
     @Override
     public void displayInformation(String s) {
         super.displayInformation(s); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public javax.swing.JComboBox populateRoomNumBox() {
-        javax.swing.JComboBox roomBox = controller.getHotelFrame().searchGuestPanel.getComboBox();
 
-        ArrayList<String> roomsArray = new ArrayList();
-
-        Rooms rooms = new Rooms();
-
-        for (int i = 0; i < rooms.availableRooms(1).size(); i++) //1 for reserved
-        {
-            roomsArray.add(rooms.availableRooms(1).get(i).toString());
-
-        }
-        roomBox.setModel(new DefaultComboBoxModel(roomsArray.toArray()));
-
-        return roomBox;
-
+    @Override
+    public JComboBox populateRoomNumBox(JComboBox roomBox, int reserved) {
+        return super.populateRoomNumBox(roomBox, reserved); 
     }
     
 
-   
-    
     
 
-    
 }

@@ -9,7 +9,7 @@ package hotelbooking_refactored.helperclasses;
  *
  * @author PC
  */
-public class InputHelper {
+public class InputHelper { //This class is primarily used to help with Guest validation entries as of 1/06/2022
 
     public static boolean isAlphabetical(String s) {
         return s.matches("^[a-zA-Z]*$");

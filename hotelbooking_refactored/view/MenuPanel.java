@@ -5,7 +5,9 @@
  */
 package hotelbooking_refactored.view;
 
+import hotelbooking_refactored.controller.AbstractController;
 import hotelbooking_refactored.controller.HotelBookGuestController;
+import hotelbooking_refactored.controller.HotelCheckoutGuestController;
 import hotelbooking_refactored.controller.HotelController;
 import hotelbooking_refactored.controller.HotelSearchGuestController;
 import hotelbooking_refactored.database.initSQL;
@@ -136,33 +138,29 @@ public class MenuPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bookGuestRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookGuestRoomActionPerformed
-        // TODO add your handling code here:
+
         HotelBookGuestController guestController = new HotelBookGuestController(controller);
-        guestController.populateRoomNumBox();
-        controller.openPanel(this, controller.getHotelFrame().bookGuestPanel);
-       
-        //new BookGuestRoomForm().setVisible(true);
+        guestController.initGuestState();
     }//GEN-LAST:event_bookGuestRoomActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        controller.exit();
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void resetDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetDBActionPerformed
-    //  controller.resetDb();
+        controller.exit();
+        controller.resetDb();
+    
        
     }//GEN-LAST:event_resetDBActionPerformed
 
     private void searchGuestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchGuestButtonActionPerformed
 
-
-//        controller.getHotelFrame().searchGuestPanel.resetComboBox();
-     //   controller.getHotelFrame().searchGuestPanel.populateComboBox(); //populates combobox for rooms
      HotelSearchGuestController searchGuestController = new HotelSearchGuestController(controller);
-     searchGuestController.populateRoomNumBox();
+     searchGuestController.populateRoomNumBox(controller.getHotelFrame().searchGuestPanel.getComboBox(), 1);
         controller.openPanel(this, controller.getHotelFrame().searchGuestPanel);
-        //Will need to init rooms
+
     }//GEN-LAST:event_searchGuestButtonActionPerformed
 
     private void viewRoomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRoomsButtonActionPerformed
@@ -171,11 +169,10 @@ public class MenuPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_viewRoomsButtonActionPerformed
 
     private void checkOutGuestButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutGuestButton1ActionPerformed
-        // TODO add your handling code here:
-        //NEED TO MAKE IT RESET BOXES SAME WITH SEARCH GUEST
-        HotelSearchGuestController searchGuestController = new HotelSearchGuestController(controller);
-      searchGuestController.populateRoomNumBox();
-        controller.openPanel(this, controller.getHotelFrame().checkoutGuestPanel);
+
+ 
+      HotelCheckoutGuestController checkoutController = new HotelCheckoutGuestController(controller);
+      checkoutController.openPanel();
         
     }//GEN-LAST:event_checkOutGuestButton1ActionPerformed
 

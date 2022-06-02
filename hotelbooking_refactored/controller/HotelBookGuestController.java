@@ -5,7 +5,6 @@
  */
 package hotelbooking_refactored.controller;
 
-import hotelbooking_refactored.database.DatabaseScripts;
 import hotelbooking_refactored.helperclasses.InputHelper;
 import hotelbooking_refactored.model.Guest;
 import hotelbooking_refactored.model.Rooms;
@@ -23,28 +22,57 @@ public class HotelBookGuestController extends AbstractController {
     private Guest g;
     private HotelController controller;
     
-    private static int init = 0;  //When this class hasnt been used yet it is 0
-    
-    public HotelBookGuestController(HotelController controller)
+    public HotelBookGuestController(HotelController controller) 
     {
         this.controller = controller;
     }
     
+    public void initGuestState() //Resets guest text, and retrieves comboBox, this is used when the panel is opened
+    {
+        controller.getHotelFrame().bookGuestPanel.getDiscountField().setText("");
+        controller.getHotelFrame().bookGuestPanel.getFirstNameField().setText("");
+        controller.getHotelFrame().bookGuestPanel.getLastNameField().setText("");
+        controller.getHotelFrame().bookGuestPanel.getPhoneNumField().setText("");
+        controller.getHotelFrame().bookGuestPanel.getBookGuest().setEnabled(true);
+        controller.getHotelFrame().bookGuestPanel.resetRoomNum(); //this resets room num to 0
+        populateRoomNumBox(controller.getHotelFrame().bookGuestPanel.getRoomNumBox(), 0);
+         controller.openPanel(controller.getHotelFrame().menuPanel, controller.getHotelFrame().bookGuestPanel);
+    }
+    
+
+    public void bookGuestButton(String firstName, String lastName, String phoneNum, int roomNum)
+    {
+        if(roomNum < 1)
+        {
+            displayError("Please select a room");
+        }
+        else
+        {
+        int correct = validateInformation( firstName,  lastName, phoneNum, roomNum);
+            if(correct == 3)
+            {
+                controller.getHotelFrame().bookGuestPanel.getBookGuest().setEnabled(false);
+            }
+        }
+        
+    }
+    
+    
     public int validateInformation(String firstName, String lastName, String number, int roomNum) //Checks if all the information provided is valid
     {
-        int correctInfo = 3; //We need firstName, lastName and number to be correct
+        int correctInfo = 3; //We need firstName, lastName and number to be correct, if 3 items arent correct we will display error message
         String errors = "";
         
-        if(validate(firstName,true) == false){
+        if(validate(firstName,true) == false){ //checks firstName length and sees if it contains any non alphabetical chars
             errors += "Cannot validate first name ";
             correctInfo--;
         }
-        if(validate(lastName,true) == false){
+        if(validate(lastName,true) == false){ //Same as above
            errors += "Cannot validate last name ";
             correctInfo--;
         }
         
-        if(validate(number,false) == false){
+        if(validate(number,false) == false){ //Checks if phoneNumber is in right format ie, no letters
             errors += "Cannot validate phone number";
             correctInfo--;
         }
@@ -55,12 +83,11 @@ public class HotelBookGuestController extends AbstractController {
         }
         else //If all information is correct we create guest object and add to system
         {
-            Guest g = new Guest(firstName, lastName, number, roomNum);
-            bookGuestButton(g);
+            Guest g = new Guest(firstName, lastName, number, roomNum); 
+            bookGuest(g); //Call bookGuestButton which will insert Guest into Database
         }
         return correctInfo; //return correctInfo as when it is 3 it means we can create the guest object
-
-        
+   
     }
     //This function will validate the input, this is used in the guest form to validate the input
     public boolean validate(String input, boolean name) //if boolean name false then does phone number
@@ -80,9 +107,7 @@ public class HotelBookGuestController extends AbstractController {
     }
     
    
-    
-    
-    public void bookGuestButton(Guest g) //this handles the book guest button
+    public void bookGuest(Guest g) //this handles the book guest 
     {
         this.g = g;
         g.insertGuest(); 
@@ -91,32 +116,16 @@ public class HotelBookGuestController extends AbstractController {
     
     public void displayConfirmation()
     {
-        String displayMessage = "Congrats for booking a room "+g.getReceipt();
+        String displayMessage = "Congrats for booking a room we hope you will enjoy your stay "+g.getReceipt();
    
         showMessageDialog(null, displayMessage);
-        //g.getConfirmationResultSet("John", "Doe");
+
         
     }
     
-    public javax.swing.JComboBox populateRoomNumBox() //This populates and updates the RoomNumBox model
-    {
-
-        javax.swing.JComboBox roomBox = controller.getHotelFrame().bookGuestPanel.getRoomNumBox();
-       ArrayList <String> roomsArray = new ArrayList();
-        
-       Rooms rooms = new Rooms();
-      
-       for(int i = 0; i < rooms.availableRooms(0).size(); i++)
-        {
-            roomsArray.add(rooms.availableRooms(0).get(i).toString());
-           
-          
-        } 
-       roomBox.setModel(new DefaultComboBoxModel(roomsArray.toArray()));
-       
-
-       return roomBox;
-        
+    @Override
+    public JComboBox populateRoomNumBox(JComboBox roomBox, int reserved) { //this populates room
+        return super.populateRoomNumBox(roomBox, reserved); 
     }
     
 

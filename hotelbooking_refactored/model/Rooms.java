@@ -34,7 +34,7 @@ public class Rooms {
    
     
     
-    public void generateRooms() //This will be initlized when a new user sets up DB
+    public void generateRooms() //This will be initlized when a new user sets up DB, generates Rooms for DB
     {
         scripts = new DatabaseScripts();
         
@@ -120,9 +120,9 @@ public class Rooms {
     public void checkoutGuest(int roomNumber) //This is used to checkout a guest from a room using SQL
     {
         scripts = new DatabaseScripts();
-        scripts.executeSQL("UPDATE ROOMS\nSET ISRESERVED = 0, GUESTID = 0, CHECKIN = NULL, CHECKOUT = NULL\n WHERE ROOMNUM = "+roomNumber);
+        scripts.executeSQL("UPDATE ROOMS\nSET ISRESERVED = 0, GUESTID = 0, CHECKIN = NULL, CHECKOUT = NULL\n WHERE ROOMNUM = "+roomNumber); //Set isReserved to 0 as guest checkedout
         scripts.executeSQL("DELETE FROM GUESTS WHERE ROOMNUM ="+roomNumber);
-        System.out.println("Checkout guest test");
+
         scripts.closeConnection();
        
     }

@@ -27,7 +27,7 @@ public class HotelController implements MainControllerInterface {
     public void start() //This will be the entry point into the program
     {
         db = new DatabaseScripts();
-        precheckDb = new initSQL(); //Does precheck to see if database exisit     
+        precheckDb = new initSQL(false); //Does precheck to see if database exisit     
         hotelFrame = new HotelFrame(this);   
         
       //  changePanel(hotelFrame.menuPanel);

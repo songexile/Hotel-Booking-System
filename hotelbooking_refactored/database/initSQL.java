@@ -5,7 +5,9 @@
  */
 package hotelbooking_refactored.database;
 
-import hotelbookinggui.*;
+
+import hotelbooking_refactored.model.Login;
+import hotelbooking_refactored.model.Rooms;
 import java.sql.Connection;
 
 /**
@@ -18,7 +20,7 @@ public class initSQL { //Class to help init SQL for new user
     StoreSQL sqlScripts;
     
     
-    public initSQL()
+    public initSQL(boolean dropTables) //If dropTable true program will dropTable when starts up.
     {
         scripts = new DatabaseScripts();
         conn = scripts.getConnection();
@@ -27,7 +29,7 @@ public class initSQL { //Class to help init SQL for new user
       //   conn = scripts.getConnection();
       
          //sqlScripts = new StoreSQL(); //This class just stores string text of SQL commands
-         initBoot(); 
+         initBoot(dropTables); 
     }
     
     public void deleteTables() //Table can be used to delete all tables
@@ -79,13 +81,16 @@ public class initSQL { //Class to help init SQL for new user
 
     
 
-    public void initBoot() //Init boot checks if database already exist, if doesnt creates it
+    public void initBoot(boolean dropTables) //Init boot checks if database already exist, if doesnt creates it
     {
         System.out.println("init boot");
-   // deleteTables();
-      
-   
-    //   deleteTables(); //temp
+
+        
+        if(dropTables) //This will reset DB
+        {
+            deleteTables();
+        }
+        
         boolean newUser = checkNewUser();
         if(newUser == true) 
             {
@@ -93,9 +98,9 @@ public class initSQL { //Class to help init SQL for new user
                 Login login = new Login();
                 Rooms rooms = new Rooms();
                  generateTables(); 
-                 scripts.userLoginStatement("a", "a");
+                 scripts.userLoginStatement("pdc", "pdc");
                  rooms.generateRooms();
-                 rooms.availableRooms();
+               
                 
              
 

@@ -6,7 +6,9 @@
 package hotelbooking_refactored.model;
 
 
-import hotelbookinggui.*;
+
+import hotelbooking_refactored.database.DatabaseScripts;
+import hotelbooking_refactored.database.StoreSQL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -34,8 +36,8 @@ public class Login { //Class to seperate Database (model) with the View
                     if(rs.getString("password").equals(password)){
                         System.out.println("Login correct");
                         
-                        MenusHelper helper = new MenusHelper();
-                        helper.setCloseMenu(true);
+                    //    MenusHelper helper = new MenusHelper();
+                      //  helper.setCloseMenu(true);
          
                         return true;
                     }        

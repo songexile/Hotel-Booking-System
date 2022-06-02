@@ -8,6 +8,7 @@ package hotelbooking_refactored.view;
 import hotelbooking_refactored.controller.HotelController;
 import hotelbooking_refactored.controller.HotelDiscountController;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -31,6 +32,12 @@ public class DiscountPanel extends javax.swing.JPanel {
     public JTextField getDiscountField() {
         return discountField;
     }
+
+    public JToggleButton getAddButton() {
+        return addButton;
+    }
+    
+    
     
     
 

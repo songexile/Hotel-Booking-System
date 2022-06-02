@@ -24,6 +24,7 @@ public class HotelDiscountController extends ControllerHelper implements Control
         controller.openPanel(controller.getHotelFrame().menuPanel, controller.getHotelFrame().discountPanel);
         controller.getHotelFrame().discountPanel.getDiscountAmount().setText("");
         controller.getHotelFrame().discountPanel.getDiscountField().setText("");
+        controller.getHotelFrame().discountPanel.getAddButton().setEnabled(true);
         
     }
 
@@ -39,6 +40,8 @@ public class HotelDiscountController extends ControllerHelper implements Control
        {  
         Discount discount = new Discount(discountField,discountAmount);
         this.displayInformation(discount.getConfirmation());  
+        controller.getHotelFrame().discountPanel.getAddButton().setEnabled(false);
+        
        }
            
     }

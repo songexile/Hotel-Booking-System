@@ -32,23 +32,24 @@ public class InputHelper { //This class is primarily used to help with Guest val
         return true;
     }
     
-    public static boolean checkName(String name)
+    public static boolean checkName(String name) //Returns true if Name is formatted ie, correct length and contains no numbers
     {
-        boolean flag = true;
+        if(isAlphabetical(name) == false)
+                return false;
+        if(checkLength(2,30,name) == false)
+            return false;
         
-        flag = isAlphabetical(name);
-        flag = checkLength(2,30,name);
-        
-        return flag;
+        return true;
     }
     
-    public static boolean checkNumber(String number)
+    public static boolean checkNumber(String number) //Return true is Number is formatted and matches conditions
     {
-        boolean flag = true;
+
+        if(isNumerical(number) == false)
+            return false;
+        if(checkLength(5,15,number) == false)
+            return false;
         
-        flag = isNumerical(number);
-        flag = checkLength(5,15,number);
-        
-        return flag;
+        return true;
     }
 }

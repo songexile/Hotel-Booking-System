@@ -11,6 +11,6 @@ and the ability to search current staying guest in the hotel.
 
 Written by Otis Wales 2022
 
-User name = "PDC"
-Password = "PDC"
+User name = "pdc"
+Password = "pdc"
 Entry point = HotelRunner.java

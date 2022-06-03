@@ -14,3 +14,5 @@ Written by Otis Wales 2022
 User name = "pdc"
 Password = "pdc"
 Entry point = HotelRunner.java
+
+!menu(https://imgur.com/a/dcauw2n)

@@ -21,6 +21,11 @@ public class ControllerHelper {
         showMessageDialog(null, errorMessage);
 
     }
+    
+    public void displayComboboxError(){
+        showMessageDialog(null, "Please select a room from the dropdown comboBox");
+    }
+            
 
     public void displayInformation(String information) {
 

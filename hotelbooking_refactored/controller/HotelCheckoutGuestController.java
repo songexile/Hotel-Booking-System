@@ -13,7 +13,7 @@ import javax.swing.JComboBox;
  *
  * @author PC
  */
-public class HotelCheckoutGuestController extends ControllerHelper implements ControllerInterface {
+public class HotelCheckoutGuestController extends ControllerHelper implements ControllerInterface { //This class is the controller for CheckoutGuest
 private HotelController controller;
 
 public HotelCheckoutGuestController(HotelController controller)
@@ -28,10 +28,10 @@ public HotelCheckoutGuestController(HotelController controller)
     
     public void pressButton() //When button is pressed, guest is checked out of room and button state is unclickable
     {
-       // controller.getHotelFrame().checkoutGuestPanel.getGuestButton();
+   
        if(controller.getHotelFrame().checkoutGuestPanel.getRoomNum() == 0)
        {
-           this.displayError("Please select a room from the combo box");
+           this.displayComboboxError(); //Tells user to select item from comboBox
        }
        
        else{

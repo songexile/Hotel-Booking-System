@@ -6,11 +6,8 @@
 package hotelbooking_refactored.controller;
 
 import hotelbooking_refactored.helperclasses.InputHelper;
-import hotelbooking_refactored.model.Discount;
 import hotelbooking_refactored.model.Guest;
 import hotelbooking_refactored.model.Rooms;
-import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -45,7 +42,7 @@ public class HotelBookGuestController extends ControllerHelper implements Contro
     {
         if(roomNum < 1)
         {
-            displayError("Please select a room"); //if user doesnt select room, default roomnum will be 0
+            this.displayComboboxError(); //tells user to select a room
         }
         else
         {

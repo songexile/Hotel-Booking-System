@@ -54,14 +54,17 @@ public class SearchGuestPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         roomNumBox = new javax.swing.JComboBox<>();
         backButton = new javax.swing.JButton();
         searchGuest = new javax.swing.JButton();
 
+        jLabel2.setText("jLabel2");
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Search Guest");
+        jLabel1.setText("Search Guest by Room Number");
 
         jLabel5.setText("Room Number");
 
@@ -97,7 +100,7 @@ public class SearchGuestPanel extends javax.swing.JPanel {
                         .addComponent(searchGuest, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 249, Short.MAX_VALUE)))
+                        .addGap(0, 55, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -145,6 +148,7 @@ public class SearchGuestPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JComboBox<String> roomNumBox;
     private javax.swing.JButton searchGuest;

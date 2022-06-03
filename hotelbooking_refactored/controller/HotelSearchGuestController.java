@@ -49,7 +49,7 @@ public class HotelSearchGuestController extends ControllerHelper implements Cont
         
         if(roomNum < 1)
         {
-            this.displayError("Please select a room from the combo box");
+            this.displayComboboxError();
         }
         else
         {

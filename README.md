@@ -15,4 +15,5 @@ User name = "pdc"
 Password = "pdc"
 Entry point = HotelRunner.java
 
-!menu(https://imgur.com/a/dcauw2n)
+<img alt="menu" src="https://imgur.com/a/dcauw2n">
+

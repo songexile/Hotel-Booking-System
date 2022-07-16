@@ -23,5 +23,8 @@ Password = "pdc"
 Entry point = HotelRunner.java
 
 
-
+### Demo of application
 ![Gif](https://media.giphy.com/media/iYP2SAZ1HdUXfrrGzf/giphy-downsized-large.gif)
+
+### Menu
+![Menu](https://media.giphy.com/media/0RsNgYB4WEeWg1UVbU/giphy.gif)

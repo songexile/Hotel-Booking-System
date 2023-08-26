@@ -1,30 +1,40 @@
-# Hotel-Booking-GUI
+# 🏨 Hotel-Booking-GUI
 
-Hotel Booking GUI is a GUI Interface for managing a Hotel System.
+A robust GUI interface designed to simplify hotel management tasks.
 
-It allows the user to
+## 🌟 Features
 
-+ Add guest to database
-+ Search current guest in hotel
-+ Checkout guest
-+ View state of room
+- **Add Guest:** Easily input and save guest details to the database.
+- **Search:** Quickly locate current guests staying at the hotel.
+- **Checkout:** Process guest checkouts with a few clicks.
+- **Room Status:** At a glance, view the occupancy status of each room.
 
-____________________
+---
 
+## 🛠️ Technology Stack
 
-This program uses Apache Derby for the Database aswell as using Java Swing for the front-end.
+- **Database:** Apache Derby – a reliable and efficient database system.
+- **Front-end:** Java Swing – providing a responsive and intuitive user interface.
 
-Written by Otis Wales 2022
+---
 
-## Login details
+## 🔐 Login Details
 
-User name = "pdc"
-Password = "pdc"
-Entry point = HotelRunner.java
+- **Username:** `pdc`
+- **Password:** `pdc`
+- **Entry Point:** `HotelRunner.java`
 
+---
 
-### Demo of application
+## 🎥 Demonstrations
+
+### Application Overview
 ![Gif](https://media.giphy.com/media/iYP2SAZ1HdUXfrrGzf/giphy-downsized-large.gif)
 
-### Menu
+### Navigating the Menu
 ![Menu](https://media.giphy.com/media/0RsNgYB4WEeWg1UVbU/giphy.gif)
+
+---
+
+Written by Otis Wales, 2022.
+
